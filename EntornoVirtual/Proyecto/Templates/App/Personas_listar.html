@@ -1,0 +1,68 @@
+{% extends 'Base/Base.html'  %}
+
+{% block content %}
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Lista de Personas registradas </h2>
+            <p>Encuentra aqui las personas que ya han sido registradas previamente </p>
+        </div>
+    </section>
+
+        {% if object_list %}
+            <section CLASS="jumbotron">
+                {% for persona in object_list %}
+                <div class = "container" >
+                    <h1> {{ persona.nombre }} </h1>
+                    <aside class = "container"></aside>
+                    <aside class="container">
+                        <div><SPAN> Codigo : </SPAN>{{ persona.id }}</div>
+                        <div><SPAN>Apellidos y nombres: </SPAN>{{ persona.nombre }}</div>
+                        <div><SPAN>DNI : </SPAN>{{ persona.dni }}</div>
+                    </aside>
+                    </div>
+                {% endfor %}
+            </section>
+
+            {% endif %}
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>APELLIDOS Y NOMBRES</td>
+                <td>DNI</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <div class="table-responsive">
+            {% if object_list %}
+               {% for persona in object_list %}
+                <tr class="activate">
+                <td>{{ persona.id }}</td>
+                <td>{{ persona.nombre }}</td>
+                <td>{{ persona.dni }}</td>
+
+                </tr>
+                 {% endfor%}
+               {% else %}
+                <h1>No se encuentran registros actualmente</h1>
+            {%endif%}
+            </div>
+        </tbody>
+
+
+    </table>
+    <ul class="pager">
+        <li>
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}"></a>
+            {% endif %}
+        </li>
+        <li>
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}"> Next</a>>
+            {% endif %}
+        </li>
+    </ul>
+{% endblock %}

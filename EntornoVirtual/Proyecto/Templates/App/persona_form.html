@@ -1,0 +1,18 @@
+{% extends 'Base/Base.html'%}
+
+{% load crispy_forms_tags %}
+{%block content%}
+<section class="jumbotron">
+        <div class="container">
+            <h2>Registrar personas </h2>
+            <p> Aqui registraremos a las personas naturales </p>
+            <form method="post">
+             {% csrf_token %}
+             {{form.as_p}}
+                <button  class="btn btn-primary" type="submit">Registrar</button>
+                </form>
+            </div>
+    </section>
+
+
+{% endblock %}
