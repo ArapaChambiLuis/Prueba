@@ -1,0 +1,37 @@
+{% extends 'Base/Base.html'  %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <section class="jumbotron">
+        <div class="container">
+            <h2>Lista de Personas registradas </h2>
+            <p>Encuentra aqui las personas que ya han sido registradas previamente </p>
+        </div>
+    </section>
+    <div class = "searchbox">
+
+        {% csrf_token %}
+    </div>
+        {% if object_list %}
+            <section CLASS="jumbotron">
+                {% for persona in object_list %}
+                <div class = "container" >
+                    <a href="{% url 'VerDatosGener' persona.id %}" ><h1 > {{ persona.nombre }} </h1></a>
+                    <aside class = "container"></aside>
+                    <aside class="container">
+                        <div><SPAN> Codigo : </SPAN>{{ persona.id }}</div>
+                        <div><SPAN>Apellidos y nombres: </SPAN>{{ persona.nombre }}</div>
+                        <div><SPAN>DNI : </SPAN>{{ persona.dni }}</div>
+                    </aside>
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+    <script>
+
+    </script>
+
+
+
+
+
+{% endblock %}

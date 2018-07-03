@@ -1,10 +1,10 @@
-    .navbar {
+    navbar {
         margin-bottom: 0;
     }
     .navbar-inverse{
         background-color: #0d1466;
         font:#0d1466;
     }
-    .body{
+    body{
         color:#0d1466;
     }

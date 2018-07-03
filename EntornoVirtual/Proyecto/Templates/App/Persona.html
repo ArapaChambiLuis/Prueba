@@ -1,12 +1,22 @@
-{% extends 'Base/Base.html' %}
+{% extends 'App/Persona_form.html' %}
 {% load crispy_forms_tags %}
-  {% block content %}
+
     <section class="jumbotron">
         <div class="container">
             <h2>Registrar personas </h2>
             <p> Aqui registraremos a las personas naturales </p>
+                        <div class = "row" >
+                              <h1> {{ objecto_datos.nombre }} </h1>
+                              <div >
+                                  <H3>Datos personales</H3>
+                                  <hr>
+                                  <aside class="container">
+                                      <div><SPAN> Codigo : </SPAN>{{ objecto_datos.id }}</div>
+                                      <div><SPAN>Apellidos y nombres: </SPAN>{{ objecto_datos.nombre }}</div>
+                                      <div><SPAN>DNI : </SPAN>{{ objecto_datos.dni }}</div>
+                                  </aside>
+                              </div></div>
         </div>
     </section>
 
 
-    {% endblock %}

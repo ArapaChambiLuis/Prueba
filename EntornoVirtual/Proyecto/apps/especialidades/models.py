@@ -5,16 +5,25 @@ class  Persona(models.Model):
     nombre = models.CharField( max_length = 50, null = False)
     dni = models.CharField(max_length = 8, null = False)
 
+    def __str__(self):
+        return '{}'.format(self.nombre)
+
 class CentroEstudio(models.Model):
     DescCentEst = models.CharField( max_length = 100, null = False)
     estados = ((1, 'S'), (2, 'N'))
     Vigente = models.IntegerField(choices=estados, default=2)
+
+    def __str__(self):
+        return '{}'.format(self.DescCentEst)
 
 class Profesiones(models.Model):
     Grado = models.CharField(max_length = 10, null = False)
     DesProf= models.CharField(max_length = 30, null = False)
     estados = ((1,'S'),(2,'N'))
     Vigente = models.IntegerField(choices=estados,default=2)
+
+    def __str__(self):
+        return '{}'.format(self.DesProf)
 
 class Capacitacion(models.Model):
     CodPers = models.ForeignKey(Persona, null = False, blank = True, on_delete = models.CASCADE)
@@ -36,6 +45,8 @@ class PerProfesion(models.Model):
     FecCIPVig = models.DateField(null = False)
     estados = ((1, 'S'), (2, 'N'))
     Vigente = models.IntegerField(choices=estados, default=2)
+
+
 
 class Experiencia(models.Model):
     CodPers = models.ForeignKey(Persona, null = False, blank= True, on_delete = models.CASCADE)
